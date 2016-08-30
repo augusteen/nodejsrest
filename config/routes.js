@@ -23,7 +23,7 @@ module.exports = {
             employee.create(req.body, res);
         });
 
-        app.put('/api/employee/', function(req, res) {
+        app.put('/api/employee/:id/', function(req, res) {
             employee.update(req.body, res);
         });
 
