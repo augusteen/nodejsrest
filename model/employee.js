@@ -13,6 +13,7 @@ var Employee = function() {
 
     this.create = function(todo, res) {
         connection.acquire(function(err, con) {
+            console.log(todo);
             con.query('insert into employee set ?', todo, function(err, result) {
                 con.release();
                 if (err) {
