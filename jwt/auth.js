@@ -3,6 +3,8 @@ var unless = require('express-unless');
 
 var express = require('express');
 var router = express.Router();
+var validate = express.Router();
+
 var jwt = require('jsonwebtoken');
 
 var secretKey = 'lskdfjLKJOLIJLKSksdkasj39039023';
@@ -44,10 +46,12 @@ module.exports = {
             });
         });
 
-        // app.use('/api', expressJwt({ secret: secretKey }));
+        // validate.post('/',function(req,res){
+        //     var token = req.body.token;
 
+        // });
+        // app.use('/api', expressJwt({ secret: secretKey }));
         app.use('/authenticate', router);
         app.use(jwtCheck.unless('/authenticate'));
     }
-
 }

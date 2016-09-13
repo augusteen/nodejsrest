@@ -13,13 +13,16 @@ var Employee = function() {
 
     this.create = function(todo, res) {
         connection.acquire(function(err, con) {
+            
+            delete todo.id;
             console.log(todo);
             con.query('insert into employee set ?', todo, function(err, result) {
                 con.release();
                 if (err) {
+                    console.log(err);
                     res.send({ status: 1, message: 'TODO creation failed' });
                 } else {
-                    res.send({ status: 0, message: 'TODO created successfully' });
+                    res.send({ success: true, message: 'TODO created successfully' });
                 }
             });
         });
